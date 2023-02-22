@@ -88,4 +88,60 @@ class Mahasiswa extends BaseController
             exit('Tidak dapat diproses');
         }
     }
+    public function EditData()
+    {
+        if ($this->request->isAJAX()) {
+            $id_mahasiswa = $this->request->getVar('id_mahasiswa');
+            $row = $this->MahasiswaModel->where('id_mahasiswa', $id_mahasiswa)->first();
+            $data = [
+                'id_mahasiswa' => $row['id_mahasiswa'],
+                'nim' => $row['nim'],
+                'nama' => $row['nama'],
+                'tempat' => $row['tempat'],
+                'tgl' => $row['tgl'],
+                'jenkel' => $row['jenkel'],
+            ];
+
+            $msg = [
+                'sukses' => view('mahasiswa/edit', $data)
+            ];
+
+            echo json_encode($msg);
+        }
+    }
+
+    public function UpdateData()
+    {
+        if ($this->request->isAJAX()) {
+            $this->MahasiswaModel->save([
+                'id_mahasiswa' => $this->request->getVar('id_mahasiswa'),
+                'nama' => $this->request->getVar('nama'),
+                'nim' => $this->request->getVar('nim'),
+                'tempat' => $this->request->getVar('tempat'),
+                'tgl' => $this->request->getVar('tanggal'),
+                'jenkel' => $this->request->getVar('jenkel'),
+            ]);
+            $msg = [
+                'sukses' => 'Data Mahasiswa Berhasil Diubah'
+            ];
+            echo json_encode($msg);
+        } else {
+            exit('Tidak dapat diproses');
+        }
+    }
+
+    public function DeleteData()
+    {
+        if ($this->request->isAJAX()) {
+            $this->MahasiswaModel->delete([
+                'id_mahasiswa' => $this->request->getVar('id_mahasiswa'),
+            ]);
+            $msg = [
+                'sukses' => 'Data Mahasiswa Berhasil Dihapus'
+            ];
+            echo json_encode($msg);
+        } else {
+            exit('Tidak dapat diproses');
+        }
+    }
 }

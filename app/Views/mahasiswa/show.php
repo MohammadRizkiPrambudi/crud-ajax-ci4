@@ -27,7 +27,4 @@
     </div> <!-- end col -->
 </div> <!-- end row -->
 <div class="view-modal" style="display: none;"></div>
-<script>
-
-</script>
 <?= $this->endSection(); ?>

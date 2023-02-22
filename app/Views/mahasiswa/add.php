@@ -9,6 +9,7 @@
             </div>
             <div class="modal-body">
                 <form class="frm-tambahmahasiswa" action="/Mahasiswa/InsertData">
+                    <?= csrf_field(); ?>
                     <div class="form-group">
                         <label>Nama</label>
                         <input autocomplete="off" type="text" class="form-control" name="nama" id="nama" placeholder="Nama" />

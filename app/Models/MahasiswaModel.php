@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class MahasiswaModel extends Model
 {
     protected $table            = 'mahasiswa';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_mahasiswa';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $protectFields    = true;
